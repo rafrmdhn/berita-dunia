@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,9 +16,25 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        $categories = [
+            ['name' => 'Politics', 'slug' => 'politics', 'status' => 1],
+            ['name' => 'Finance', 'slug' => 'finance', 'status' => 1],
+            ['name' => 'Health & lifestyle', 'slug' => 'health-lifestyle', 'status' => 1],
+            ['name' => 'Edutech', 'slug' => 'edutech', 'status' => 1],
+            ['name' => 'Technology', 'slug' => 'technology', 'status' => 1],
+        ];
+
+        // foreach ($categories as $category) {
+        //     Category::create($category);
+        // }
+
+        $this->call([
+            ArtikelSeeder::class,
         ]);
     }
 }
