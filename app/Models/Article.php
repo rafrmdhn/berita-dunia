@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -31,5 +32,34 @@ class Article extends Model
             ->whereHas('category', function ($c) {
                 $c->whereIn('slug', ['politics','finance']);
             });
+    }
+
+    public function scopeTrendingByViews($q, int $days = 7)
+    {
+        return $q
+            ->where('status', 'published')
+            ->where('tanggal_posting', '>=', now()->subDays($days))
+            ->orderByDesc('views');
+    }
+
+    public function scopeTrendingScore($q, int $days = 7)
+    {
+        $q
+            ->when(Schema::hasColumn($this->getTable(), 'is_published'), fn ($qq) =>
+                $qq->where('is_published', 1)
+            )
+            ->when(Schema::hasColumn($this->getTable(), 'published_at'), fn ($qq) =>
+                $qq->whereNotNull('published_at')
+            );
+
+        $q->whereDate('tanggal_posting', '>=', now()->subDays($days)->toDateString());
+
+        return $q->select('*')
+            ->selectRaw("
+                (views / POW(
+                    GREATEST(TIMESTAMPDIFF(HOUR, CONCAT(tanggal_posting, ' 00:00:00'), NOW()), 1)
+                , 1.5)) as trending_score
+            ")
+            ->orderByDesc('trending_score');
     }
 }
