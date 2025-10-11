@@ -52,7 +52,14 @@ class HomeController
             ->latest('created_at')
             ->take(13)
             ->get();
+        
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $catNames))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
 
-        return view('news.index', compact('hero','breaking','featured','side','latest'));
+        return view('news.index', compact('hero', 'breaking', 'featured', 'side', 'latest', 'trending'));
     }
 }
