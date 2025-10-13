@@ -9,8 +9,8 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-                <a href="/" class="nav-item nav-link active">Home</a>
-                <a href="category.html" class="nav-item nav-link">Category</a>
+                <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('category.index') }}" class="nav-item nav-link {{ request()->routeIs('category.index') ? 'active' : '' }}">Category</a>
                 <a href="single.html" class="nav-item nav-link">Single News</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
