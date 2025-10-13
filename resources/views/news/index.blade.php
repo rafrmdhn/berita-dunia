@@ -12,8 +12,8 @@
                             <div class="overlay">
                                 <div class="mb-2">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                        href="">{{ $item->category->name }}</a>
-                                    <a class="text-white" href="">{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</a>
+                                        href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                    <span class="text-white">{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</span>
                                 </div>
                                 <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 50) }}</a>
                             </div>
@@ -31,8 +31,8 @@
                                 <div class="overlay">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">{{ $item->category->name }}</a>
-                                        <a class="text-white" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                            href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                        <span class="text-white"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                     </div>
                                     <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 50) }}</a>
                                 </div>
@@ -80,8 +80,8 @@
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">{{ $item->category->name }}</a>
-                                <a class="text-white" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                    href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                <span class="text-white"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                             </div>
                             <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 50) }}</a>
                         </div>
@@ -112,8 +112,8 @@
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="">{{ $item->category->name }}</a>
-                                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                                href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                         </div>
                                         <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 30) }}</a>
                                         <p class="m-0">{{ Str::limit(strip_tags($item->deskripsi), 50) }}</p>
@@ -140,8 +140,8 @@
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="">{{ $item->category->name }}</a>
-                                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                                href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                         </div>
                                         <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 30) }}</a>
                                     </div>
@@ -163,8 +163,8 @@
                                     <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
-                                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                         </div>
                                         <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
@@ -177,8 +177,8 @@
                                     <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
-                                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                         </div>
                                         <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
@@ -198,8 +198,8 @@
                                         <div class="mt-auto p-4">
                                             <div class="mb-2">
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                    href="">{{ $item->category->name }}</a>
-                                                <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                                    href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                                <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                             </div>
                                             <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 50) }}</a>
                                             <p class="m-0">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
@@ -223,8 +223,8 @@
                                     <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
-                                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                         </div>
                                         <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
@@ -237,8 +237,8 @@
                                     <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
-                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
-                                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                                         </div>
                                         <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
