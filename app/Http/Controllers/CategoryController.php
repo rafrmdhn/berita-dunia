@@ -33,7 +33,7 @@ class CategoryController
 
         $trending = Article::with('category')->trendingScore(5, 7)->get();
 
-        $tags = Tag::all();
+        $tags = Tag::take(20)->get();
 
         return view('categories.index', compact(
             'categories',
