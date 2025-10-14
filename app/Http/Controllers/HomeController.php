@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController
@@ -52,7 +54,7 @@ class HomeController
             ->latest('created_at')
             ->take(13)
             ->get();
-        
+
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $catNames))
             ->whereNotIn('id', $usedIds)
@@ -60,6 +62,20 @@ class HomeController
             ->take(5)
             ->get();
 
-        return view('news.index', compact('hero', 'breaking', 'featured', 'side', 'latest', 'trending'));
+        $tags = Tag::take(20)->get();
+
+        $categories = Category::withCount('articles')
+            ->whereIn('name', $catNames)->take(5)->get();
+
+        return view('news.index', compact(
+            'hero',
+            'breaking',
+            'featured',
+            'side',
+            'latest',
+            'trending',
+            'tags',
+            'categories'
+        ));
     }
 }

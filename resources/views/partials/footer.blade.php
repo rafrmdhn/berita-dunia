@@ -42,50 +42,17 @@
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
             <div class="m-n1">
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
-                <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+                @foreach ($categories as $item)
+                    <a href="{{ route('category.index', ['cat' => $item->slug]) }}" class="btn btn-sm btn-secondary m-1">{{ $item->name }}</a>
+                @endforeach
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
-            <div class="row">
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="img/news-110x110-2.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="img/news-110x110-3.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="img/news-110x110-4.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="img/news-110x110-5.jpg" alt=""></a>
-                </div>
-                <div class="col-4 mb-3">
-                    <a href=""><img class="w-100" src="img/news-110x110-1.jpg" alt=""></a>
-                </div>
+            <div class="m-n1">
+                @foreach ($tags as $item)
+                    <a href="{{ route('tags.show', $item->slug) }}" class="btn btn-sm btn-secondary m-1">{{ $item->name }}</a>
+                @endforeach
             </div>
         </div>
     </div>
