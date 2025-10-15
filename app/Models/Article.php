@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 
@@ -61,5 +62,39 @@ class Article extends Model
                 , 1.5)) as trending_score
             ")
             ->orderByDesc('trending_score');
+    }
+
+    public function scopePopular($q, int $days = 30)
+    {
+        return $q
+            ->when(\Illuminate\Support\Facades\Schema::hasColumn($this->getTable(), 'is_published'), fn($qq) =>
+                $qq->where('is_published', 1)
+            )
+            ->whereDate('tanggal_posting', '>=', now()->subDays($days)->toDateString())
+            ->orderByDesc('views');
+    }
+
+    public function scopePopularScore($q, int $days = 30, float $commentsWeight = 3.0, float $decay = 1.2)
+    {
+        $table = $q->getModel()->getTable();
+
+        $q->whereDate('tanggal_posting', '>=', now()->subDays($days)->toDateString());
+
+        $q->when(Schema::hasColumn($table, 'is_published'), fn ($qq) =>
+            $qq->where('is_published', 1)
+        );
+
+        $q->addSelect("$table.*");
+        $q->addSelect(DB::raw("
+            (
+            (COALESCE($table.views,0) + ($commentsWeight * (
+                SELECT COUNT(*) FROM comments
+                WHERE comments.article_id = $table.id   -- ganti ke article_id jika itu FK-mu
+            )))
+            / POW(GREATEST(TIMESTAMPDIFF(HOUR, CONCAT($table.tanggal_posting,' 00:00:00'), NOW()), 1), $decay)
+            ) AS pop_score
+        "));
+
+        return $q->orderByDesc('pop_score');
     }
 }

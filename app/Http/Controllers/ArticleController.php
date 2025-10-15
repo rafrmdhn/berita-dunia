@@ -11,21 +11,35 @@ use Illuminate\Http\Request;
 class ArticleController
 {
     public function show($slug) {
+        $usedIds = collect();
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->firstOrFail();
-        $trending = Article::with('category')->trendingScore(5, 7)->get();
-        $categories = Category::withCount('articles')
-            ->whereIn('name', ['Politics','Finance','Health & Lifestyle','Edutech','Technology'])
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
             ->take(5)
             ->get();
-        $tags = Tag::all();
+        $categories = Category::withCount('articles')
+            ->whereIn('name', $allowedCategories)
+            ->take(5)
+            ->get();
+        $tags = Tag::take(20)->get();
+        $popular = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds ?? [])
+            ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
+            ->take(3)
+            ->get();
 
         return view('news.show', compact(
             'article',
             'trending',
             'categories',
-            'tags'
+            'tags',
+            'popular'
         ));
     }
 
@@ -46,5 +60,41 @@ class ArticleController
         Comment::create($validated);
 
         return back()->with('success', 'Komentar berhasil dikirim!');
+    }
+
+    public function trending(Request $request)
+    {
+        $usedIds = collect();
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+
+        $articles = Article::with('category')->trendingScore(7)->paginate(10);
+
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
+
+        $categories = Category::withCount('articles')
+            ->whereIn('name', $allowedCategories)
+            ->take(5)->get();
+
+        $tags = Tag::latest()->take(20)->get();
+
+        $popular = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds ?? [])
+            ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
+            ->take(3)
+            ->get();
+
+        return view('news.trending', compact(
+            'articles',
+            'trending',
+            'categories',
+            'tags',
+            'popular'
+        ));
     }
 }

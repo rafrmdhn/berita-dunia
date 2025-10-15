@@ -13,7 +13,7 @@
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center bg-white border border-left-0"
                             style="width: calc(100% - 180px); padding-right: 100px;">
                             @foreach ($trending as $item)
-                            <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="{{ route('articles.show', $item->slug) }}">{{  Str::limit($item->judul, 80) }}</a></div>
+                                <div class="text-truncate"><a class="text-secondary text-uppercase font-weight-semi-bold" href="{{ route('articles.show', $item->slug) }}">{{  Str::limit($item->judul, 80) }}</a></div>
                             @endforeach
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <!-- News Detail End -->
-                
+
                     <!-- Comment List Start -->
                     <div class="mb-3">
                         <div class="section-title mb-0">
