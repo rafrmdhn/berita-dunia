@@ -11,15 +11,16 @@ class CategoryController
 {
     public function index(Request $request)
     {
+        $usedIds = collect();
         $activeSlug = $request->query('cat');
-        $allowedNames = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
-        $categories = Category::whereIn('name', $allowedNames)
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $categories = Category::whereIn('name', $allowedCategories)
             ->take(5)
             ->get();
 
         $query = Article::with('category')
-            ->whereHas('category', function ($q) use ($allowedNames) {
-                $q->whereIn('name', $allowedNames);
+            ->whereHas('category', function ($q) use ($allowedCategories) {
+                $q->whereIn('name', $allowedCategories);
             })
             ->latest();
 
@@ -31,9 +32,21 @@ class CategoryController
 
         $articles = $query->paginate(14)->appends(['cat' => $activeSlug]);
 
-        $trending = Article::with('category')->trendingScore(5, 7)->get();
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
 
         $tags = Tag::take(20)->get();
+
+        $popular = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds ?? [])
+            ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
+            ->take(3)
+            ->get();
 
         return view('categories.index', compact(
             'categories',
@@ -41,7 +54,8 @@ class CategoryController
             'activeSlug',
             'articles',
             'trending',
-            'tags'
+            'tags',
+            'popular'
         ));
     }
 }

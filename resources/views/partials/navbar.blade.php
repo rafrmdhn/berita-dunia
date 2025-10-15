@@ -11,16 +11,8 @@
             <div class="navbar-nav mr-auto py-0">
                 <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                 <a href="{{ route('category.index') }}" class="nav-item nav-link {{ request()->routeIs('category.index') ? 'active' : '' }}">Category</a>
-                <a href="single.html" class="nav-item nav-link">Single News</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="#" class="dropdown-item">Menu item 1</a>
-                        <a href="#" class="dropdown-item">Menu item 2</a>
-                        <a href="#" class="dropdown-item">Menu item 3</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('trending.index') }}" class="nav-item nav-link {{ request()->routeIs('trending.index') ? 'active' : '' }}">Trending</a>
+                <a href="" class="nav-item nav-link">Contact</a>
             </div>
             <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                 <input type="text" class="form-control border-0" placeholder="Keyword">

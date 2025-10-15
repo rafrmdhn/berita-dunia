@@ -11,23 +11,38 @@ class TagController
 {
     public function show(Tag $tag)
     {
+        $usedIds = collect();
         $tags = Tag::take(20)->get();
         $articles = Article::with('category','tags')
             ->whereHas('tags', fn($q) => $q->where('tags.id', $tag->id))
             ->latest()
             ->paginate(10);
 
-        $allowed = ['Politics','Finance','Health & lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & lifestyle','Edutech','Technology'];
         $categories = Category::withCount('articles')
-            ->whereIn('name', $allowed)->take(5)->get();
+            ->whereIn('name', $allowedCategories)->take(5)->get();
 
-        $trending = Article::with('category')->trendingScore(5, 7)->get();
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
+
+        $popular = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds ?? [])
+            ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
+            ->take(3)
+            ->get();
+
         return view('tags.show', compact(
             'tag',
             'articles',
             'categories',
             'trending',
-            'tags'
+            'tags',
+            'populer'
         ));
     }
 }
