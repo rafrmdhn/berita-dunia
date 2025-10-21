@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Tags</h5>
             <div class="m-n1">
                 @foreach ($tags as $item)
                     <a href="{{ route('tags.show', $item->slug) }}" class="btn btn-sm btn-secondary m-1">{{ $item->name }}</a>

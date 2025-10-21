@@ -14,13 +14,13 @@
                 <a href="{{ route('trending.index') }}" class="nav-item nav-link {{ request()->routeIs('trending.index') ? 'active' : '' }}">Trending</a>
                 <a href="" class="nav-item nav-link">Contact</a>
             </div>
-            <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                <input type="text" class="form-control border-0" placeholder="Keyword">
+            <form action="{{ route('search.index') }}" method="GET" class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
+                <input type="search" name="q" class="form-control border-0" placeholder="Cari berita…" value="{{ request('q') }}" required>
                 <div class="input-group-append">
-                    <button class="input-group-text bg-primary text-dark border-0 px-3"><i
+                    <button type="submit" class="input-group-text bg-primary text-dark border-0 px-3"><i
                             class="fa fa-search"></i></button>
                 </div>
-            </div>
+            </form>
         </div>
     </nav>
 </div>
