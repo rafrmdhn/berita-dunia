@@ -13,3 +13,4 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category.in
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
 Route::get('/trending', [ArticleController::class, 'trending'])->name('trending.index');
+Route::get('/search', [ArticleController::class, 'search'])->name('search.index');

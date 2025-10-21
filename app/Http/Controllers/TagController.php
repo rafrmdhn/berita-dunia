@@ -42,7 +42,7 @@ class TagController
             'categories',
             'trending',
             'tags',
-            'populer'
+            'popular'
         ));
     }
 }

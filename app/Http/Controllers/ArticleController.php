@@ -97,4 +97,51 @@ class ArticleController
             'popular'
         ));
     }
+
+    public function search(Request $request)
+    {
+        $usedIds = collect();
+        $q     = trim($request->query('q', ''));
+        $cat   = $request->query('cat');
+        $sort  = $request->query('sort', 'recent');
+        $days  = (int) $request->query('days', 0);
+        $allowed = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+
+        $categories = Category::select('name','slug')->orderBy('name')->get();
+
+        $articles = Article::with('category')
+            ->when($q !== '', function($query) use ($q) {
+                $query->where(function($qq) use ($q) {
+                    $qq->where('judul', 'like', "%{$q}%");
+                });
+            })
+            ->whereHas('category', fn($c) => $c->whereIn('name', $allowed))
+            ->orderBy('tanggal_posting','desc')
+            ->paginate(12)
+            ->appends($request->query());
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
+        $tags = Tag::latest()->take(20)->get();
+        $popular = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
+            ->whereNotIn('id', $usedIds ?? [])
+            ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
+            ->take(3)
+            ->get();
+        return view('news.search', compact(
+            'articles',
+            'q',
+            'cat',
+            'sort',
+            'days',
+            'categories',
+            'trending',
+            'tags',
+            'popular'
+        ));
+    }
 }
