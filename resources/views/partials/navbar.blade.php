@@ -12,7 +12,7 @@
                 <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                 <a href="{{ route('category.index') }}" class="nav-item nav-link {{ request()->routeIs('category.index') ? 'active' : '' }}">Category</a>
                 <a href="{{ route('trending.index') }}" class="nav-item nav-link {{ request()->routeIs('trending.index') ? 'active' : '' }}">Trending</a>
-                <a href="" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ request()->routeIs('contact.index') ? 'active' : '' }}">Contact</a>
             </div>
             <form action="{{ route('search.index') }}" method="GET" class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
                 <input type="search" name="q" class="form-control border-0" placeholder="Cari berita…" value="{{ request('q') }}" required>

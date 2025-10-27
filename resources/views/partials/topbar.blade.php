@@ -5,14 +5,14 @@
             <nav class="navbar navbar-expand-sm bg-dark p-0">
                 <ul class="navbar-nav ml-n2">
                     <li class="nav-item border-right border-secondary">
-                        <span class="nav-link text-body small" href="#">{{ date('l, d F Y') }}</span>
+                        <span class="nav-link text-body small">{{ date('l, d F Y') }}</span>
                     </li>
-                    <li class="nav-item border-right border-secondary">
+                    {{-- <li class="nav-item border-right border-secondary">
                         <a class="nav-link text-body small" href="#">Advertise</a>
-                    </li>
-                    <li class="nav-item border-right border-secondary">
-                        <a class="nav-link text-body small" href="#">Contact</a>
-                    </li>
+                    </li> --}}
+                    {{-- <li class="nav-item border-right border-secondary">
+                        <a class="nav-link text-body small" href="{{ route('contact.index') }}">Contact</a>
+                    </li> --}}
                 </ul>
             </nav>
         </div>
@@ -20,22 +20,16 @@
             <nav class="navbar navbar-expand-sm bg-dark p-0">
                 <ul class="navbar-nav ml-auto mr-n2">
                     <li class="nav-item">
-                        <a class="nav-link text-body" href="#"><small class="fab fa-twitter"></small></a>
+                        <a class="nav-link text-body" href="https://www.tiktok.com/@fypmedia.id"><small class="fab fa-tiktok"></small></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-body" href="#"><small class="fab fa-facebook-f"></small></a>
+                        <a class="nav-link text-body" href="https://linkedin.com/company/fypgroup/"><small class="fab fa-linkedin-in"></small></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-body" href="#"><small class="fab fa-linkedin-in"></small></a>
+                        <a class="nav-link text-body" href="https://www.instagram.com/fypmedia.id"><small class="fab fa-instagram"></small></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-body" href="#"><small class="fab fa-instagram"></small></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-body" href="#"><small class="fab fa-google-plus-g"></small></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-body" href="#"><small class="fab fa-youtube"></small></a>
+                        <a class="nav-link text-body" href="https://www.youtube.com/@fypmediaid"><small class="fab fa-youtube"></small></a>
                     </li>
                 </ul>
             </nav>
