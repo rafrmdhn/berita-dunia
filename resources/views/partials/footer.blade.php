@@ -3,16 +3,15 @@
     <div class="row py-4">
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-            <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-            <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-            <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>Residence One BSD, Jl. Raya Serpong Kilometer 7, Jelupang, Kec. Serpong Utara,Kota Tangerang Selatan, Banten 15310</p>
+            <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+62 851 7512 3014‬ (Jaya)</p>
+            <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>partnership@fypmedia.id</p>
             <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
             <div class="d-flex justify-content-start">
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.tiktok.com/@fypmedia.id"><i class="fab fa-tiktok"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://linkedin.com/company/fypgroup/"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/fypmedia.id"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@fypmediaid"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
@@ -49,6 +48,6 @@
     <p class="m-0 text-center">&copy; <a href="#">Berita Dunia</a>. All Rights Reserved.
 
     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-    Design by <a href="https://htmlcodex.com">HTML Codex</a></p>
+    Design by <a href="https://fypmedia.id">FYP Media</a></p>
 </div>
 <!-- Footer End -->
