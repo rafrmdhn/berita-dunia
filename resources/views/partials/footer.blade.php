@@ -22,7 +22,7 @@
                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
                         <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                     </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 60) }}</a>
+                    <a class="small text-body text-uppercase font-weight-medium" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 60) }}</a>
                 </div>
             @endforeach
         </div>
@@ -38,7 +38,7 @@
             <h5 class="mb-4 text-white text-uppercase font-weight-bold">Tags</h5>
             <div class="m-n1">
                 @foreach ($tags as $item)
-                    <a href="{{ route('tags.show', ['slug' => $item->slug]) }}" class="btn btn-sm btn-secondary m-1">{{ $item->name }}</a>
+                    <a href="{{ route('tags.show', $item->slug) }}" class="btn btn-sm btn-secondary m-1">{{ $item->name }}</a>
                 @endforeach
             </div>
         </div>

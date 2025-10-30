@@ -59,7 +59,7 @@
                                                 <span>{{ \Carbon\Carbon::parse($article->tanggal_posting)->diffForHumans() }}</span>
                                             </div>
 
-                                            <a class="h5 mb-1 d-block" href="{{ route('articles.show', ['slug' => $article->slug]) }}">
+                                            <a class="h5 mb-1 d-block" href="{{ route('articles.show', $article->slug) }}">
                                                 {{ \Illuminate\Support\Str::limit($article->judul, 80) }}
                                             </a>
                                             <p class="m-0">
