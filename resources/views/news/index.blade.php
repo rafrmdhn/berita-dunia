@@ -8,7 +8,7 @@
                 <div class="owl-carousel main-carousel position-relative">
                     @foreach ($hero as $item)
                         <div class="position-relative overflow-hidden" style="height: 500px;">
-                            <img class="img-fluid h-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-2">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -27,7 +27,7 @@
                     @foreach ($side as $item)
                         <div class="col-md-6 px-0">
                             <div class="position-relative overflow-hidden" style="height: 250px;">
-                                <img class="img-fluid w-100 h-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                <img class="img-fluid w-100 h-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                 <div class="overlay">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -76,7 +76,7 @@
             <div class="owl-carousel news-carousel carousel-item-4 position-relative">
                 @foreach ($featured as $item)
                     <div class="position-relative overflow-hidden" style="height: 300px;">
-                        <img class="img-fluid h-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                        <img class="img-fluid h-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -107,7 +107,7 @@
                         @foreach ($latest->slice(0, 2) as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
-                                    <img class="img-fluid w-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                    <img class="img-fluid w-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -135,7 +135,7 @@
                         @foreach ($latest->slice(2, 2) as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
-                                    <img class="img-fluid w-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                    <img class="img-fluid w-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -159,7 +159,7 @@
                         <div class="col-lg-6">
                             @foreach ($latest->slice(4, 2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
+                                    <img class="img-fluid" src="{{ asset($item->gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
@@ -173,7 +173,7 @@
                         <div class="col-lg-6">
                             @foreach ($latest->slice(6, 2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
+                                    <img class="img-fluid" src="{{ asset($item->gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
@@ -191,7 +191,7 @@
                             <div class="col-lg-12">
                                 <div class="row news-lg mx-0 mb-3">
                                     <div class="col-md-6 h-100 px-0">
-                                        <img class="img-fluid h-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                        <img class="img-fluid h-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                     </div>
                                     <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
                                         <div class="mt-auto p-4">
@@ -219,7 +219,7 @@
                         <div class="col-lg-6">
                             @foreach ($latest->slice(9, 2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
+                                    <img class="img-fluid" src="{{ asset($item->gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
@@ -233,7 +233,7 @@
                         <div class="col-lg-6">
                             @foreach ($latest->slice(11, 2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ asset($item->sumber_gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
+                                    <img class="img-fluid" src="{{ asset($item->gambar) }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>

@@ -36,7 +36,7 @@
                                     <div class="col">
                                         <article class="news-card mb-4">
                                             <div class="news-thumb">
-                                                <img src="{{ $article->sumber_gambar }}" alt="{{ $article->judul }}" loading="lazy">
+                                                <img src="{{ $article->gambar }}" alt="{{ $article->judul }}" loading="lazy">
                                             </div>
 
                                             <div class="news-body position-relative">

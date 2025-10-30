@@ -51,7 +51,7 @@
                         @foreach ($articles->take(2) as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
-                                    <img class="img-fluid w-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                    <img class="img-fluid w-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -75,7 +75,7 @@
                         @foreach ($articles->skip(2)->take(2) as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
-                                    <img class="img-fluid w-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                    <img class="img-fluid w-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -95,7 +95,7 @@
                         <div class="col-lg-6">
                             @foreach ($articles->skip(4)->take(2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ $item->sumber_gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
+                                    <img class="img-fluid" src="{{ $item->gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
@@ -109,7 +109,7 @@
                         <div class="col-lg-6">
                             @foreach ($articles->skip(6)->take(2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ $item->sumber_gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
+                                    <img class="img-fluid" src="{{ $item->gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
@@ -127,7 +127,7 @@
                             @foreach ($articles->skip(8)->take(1) as $item)
                                 <div class="row news-lg mx-0 mb-3">
                                     <div class="col-md-6 h-100 px-0">
-                                        <img class="img-fluid h-100" src="{{ $item->sumber_gambar }}" style="object-fit: cover;">
+                                        <img class="img-fluid h-100" src="{{ $item->gambar }}" style="object-fit: cover;">
                                     </div>
                                     <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
                                         <div class="mt-auto p-4">
@@ -151,7 +151,7 @@
                         <div class="col-lg-6">
                             @foreach ($articles->skip(9)->take(2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ $item->sumber_gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
+                                    <img class="img-fluid" src="{{ $item->gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
@@ -165,7 +165,7 @@
                         <div class="col-lg-6">
                             @foreach ($articles->skip(11)->take(2) as $item)
                                 <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                    <img class="img-fluid" src="{{ $item->sumber_gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
+                                    <img class="img-fluid" src="{{ $item->gambar }}" style="width:100px;height:100px;object-fit:cover;" alt="">
                                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
