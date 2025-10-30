@@ -16,12 +16,7 @@ class ArticleController
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->firstOrFail();
-        $trending = Article::with('category')
-            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
-            ->whereNotIn('id', $usedIds)
-            ->trendingScore(7)
-            ->take(5)
-            ->get();
+        $trending = Article::with('category')->trendingScore(5, 7)->get();
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)
             ->take(5)
@@ -69,12 +64,7 @@ class ArticleController
 
         $articles = Article::with('category')->trendingScore(7)->paginate(10);
 
-        $trending = Article::with('category')
-            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
-            ->whereNotIn('id', $usedIds)
-            ->trendingScore(7)
-            ->take(5)
-            ->get();
+        $trending = Article::with('category')->trendingScore(5, 7)->get();
 
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)
@@ -119,12 +109,7 @@ class ArticleController
             ->orderBy('tanggal_posting','desc')
             ->paginate(12)
             ->appends($request->query());
-        $trending = Article::with('category')
-            ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
-            ->whereNotIn('id', $usedIds)
-            ->trendingScore(7)
-            ->take(5)
-            ->get();
+        $trending = Article::with('category')->trendingScore(5, 7)->get();
         $tags = Tag::latest()->take(20)->get();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
