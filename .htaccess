@@ -5,6 +5,8 @@
 
     RewriteEngine On
 
+    RewriteRule ^(css|js|lib|mail|images|img)/(.*)$ public/$1/$2 [L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
