@@ -44,7 +44,7 @@
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $article->category->slug]) }}">{{ $article->category->name }}</a>
                                                     <span class="text-body"><small>{{ \Carbon\Carbon::parse($article->tanggal_posting)->diffForHumans() }}</small></span>
                                                 </div>
-                                                <a class="h5 mb-1 d-block text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $article->slug) }}">{{ Str::limit($article->judul, 80) }}</a>
+                                                <a class="h5 mb-1 d-block text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $article->slug]) }}">{{ Str::limit($article->judul, 80) }}</a>
                                                 <p class="m-0">{{ Str::limit(strip_tags($article->deskripsi), 140) }}</p>
                                             </div>
                                         </article>

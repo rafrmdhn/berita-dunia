@@ -58,7 +58,7 @@
                                                 href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                             <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                         </div>
-                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 30) }}</a>
+                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 30) }}</a>
                                         <p class="m-0">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
                                     </div>
                                     <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
@@ -82,7 +82,7 @@
                                                 href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                             <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                         </div>
-                                        <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 30) }}</a>
+                                        <a class="h4 d-block mb-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 30) }}</a>
                                     </div>
                                     <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                                         <div class="d-flex align-items-center">
@@ -101,7 +101,7 @@
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                             <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                         </div>
-                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -115,7 +115,7 @@
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                             <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                         </div>
-                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -136,7 +136,7 @@
                                                     href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                                 <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                             </div>
-                                            <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 30) }}</a>
+                                            <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 30) }}</a>
                                             <p class="m-0">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
                                         </div>
                                         <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
@@ -157,7 +157,7 @@
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                             <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                         </div>
-                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -171,7 +171,7 @@
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
                                             <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->diffForHumans() }}</small></span>
                                         </div>
-                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', $item->slug) }}">{{ Str::limit($item->judul, 20) }}</a>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 20) }}</a>
                                     </div>
                                 </div>
                             @endforeach
