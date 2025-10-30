@@ -13,7 +13,7 @@ class CategoryController
     {
         $usedIds = collect();
         $activeSlug = $request->query('cat');
-        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
         $categories = Category::whereIn('name', $allowedCategories)
             ->take(5)
             ->get();

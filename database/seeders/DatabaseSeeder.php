@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Politics', 'slug' => 'politics', 'status' => 1],
             ['name' => 'Finance', 'slug' => 'finance', 'status' => 1],
             ['name' => 'Health & lifestyle', 'slug' => 'health-lifestyle', 'status' => 1],
-            ['name' => 'Edutech', 'slug' => 'edutech', 'status' => 1],
+            ['name' => 'Edu/Tech', 'slug' => 'Edu/Tech', 'status' => 1],
             ['name' => 'Technology', 'slug' => 'technology', 'status' => 1],
         ];
 
@@ -61,15 +61,15 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Public Health',     'slug' => 'public-health',     'category_slug' => 'health-lifestyle'],
             ['name' => 'Infectious Disease','slug' => 'infectious-disease','category_slug' => 'health-lifestyle'],
 
-            // --- Edutech ---
-            ['name' => 'Online Learning',   'slug' => 'online-learning',   'category_slug' => 'edutech'],
-            ['name' => 'LMS',               'slug' => 'lms',               'category_slug' => 'edutech'],
-            ['name' => 'MOOC',              'slug' => 'mooc',              'category_slug' => 'edutech'],
-            ['name' => 'AI in Education',   'slug' => 'ai-in-education',   'category_slug' => 'edutech'],
-            ['name' => 'Digital Literacy',  'slug' => 'digital-literacy',  'category_slug' => 'edutech'],
-            ['name' => 'Curriculum',        'slug' => 'curriculum',        'category_slug' => 'edutech'],
-            ['name' => 'Coding & STEM',     'slug' => 'coding-and-stem',   'category_slug' => 'edutech'],
-            ['name' => 'Scholarships',      'slug' => 'scholarships',      'category_slug' => 'edutech'],
+            // --- Edu/Tech ---
+            ['name' => 'Online Learning',   'slug' => 'online-learning',   'category_slug' => 'Edu/Tech'],
+            ['name' => 'LMS',               'slug' => 'lms',               'category_slug' => 'Edu/Tech'],
+            ['name' => 'MOOC',              'slug' => 'mooc',              'category_slug' => 'Edu/Tech'],
+            ['name' => 'AI in Education',   'slug' => 'ai-in-education',   'category_slug' => 'Edu/Tech'],
+            ['name' => 'Digital Literacy',  'slug' => 'digital-literacy',  'category_slug' => 'Edu/Tech'],
+            ['name' => 'Curriculum',        'slug' => 'curriculum',        'category_slug' => 'Edu/Tech'],
+            ['name' => 'Coding & STEM',     'slug' => 'coding-and-stem',   'category_slug' => 'Edu/Tech'],
+            ['name' => 'Scholarships',      'slug' => 'scholarships',      'category_slug' => 'Edu/Tech'],
 
             // --- Technology ---
             ['name' => 'Gadgets',           'slug' => 'gadgets',           'category_slug' => 'technology'],

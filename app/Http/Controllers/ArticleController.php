@@ -12,7 +12,7 @@ class ArticleController
 {
     public function show($slug) {
         $usedIds = collect();
-        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->firstOrFail();
@@ -65,7 +65,7 @@ class ArticleController
     public function trending(Request $request)
     {
         $usedIds = collect();
-        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
         $articles = Article::with('category')->trendingScore(7)->paginate(10);
 
@@ -105,7 +105,7 @@ class ArticleController
         $cat   = $request->query('cat');
         $sort  = $request->query('sort', 'recent');
         $days  = (int) $request->query('days', 0);
-        $allowed = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $allowed = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
         $categories = Category::select('name','slug')->orderBy('name')->get();
 

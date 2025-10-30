@@ -18,7 +18,7 @@ class TagController
             ->latest()
             ->paginate(10);
 
-        $allowedCategories = ['Politics','Finance','Health & lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & lifestyle','Edu/Tech','Technology'];
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)->take(5)->get();
 

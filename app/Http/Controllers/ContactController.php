@@ -14,7 +14,7 @@ class ContactController
     public function index()
     {
         $usedIds = collect();
-        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)

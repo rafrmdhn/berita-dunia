@@ -20,7 +20,7 @@ class ArtikelTagSeeder extends Seeder
             'politics'         => ['election','parliament','public-policy','law-and-human-rights','corruption','diplomacy','security','local-elections'],
             'finance'          => ['stock-market','banking','interest-rates','inflation','tax','fintech','cryptocurrency','commodities'],
             'health-lifestyle' => ['nutrition','mental-health','fitness','sleep','beauty','parenting','public-health','infectious-disease'],
-            'edutech'          => ['online-learning','lms','mooc','ai-in-education','digital-literacy','curriculum','coding-and-stem','scholarships'],
+            'Edu/Tech'          => ['online-learning','lms','mooc','ai-in-education','digital-literacy','curriculum','coding-and-stem','scholarships'],
             'technology'       => ['gadgets','artificial-intelligence','cybersecurity','apps','cloud','data-science','blockchain','internet-of-things'],
         ];
 

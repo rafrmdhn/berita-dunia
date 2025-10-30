@@ -11,7 +11,7 @@ class HomeController
 {
     public function index()
     {
-        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edutech','Technology'];
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
         $usedIds = collect();
 
