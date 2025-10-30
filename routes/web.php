@@ -12,7 +12,7 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articl
 Route::post('/comments/store', [ArticleController::class, 'comment'])->name('comments.store');
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
-Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
+Route::get('/tags/{slug}', [TagController::class, 'show'])->name('tags.show');
 Route::get('/trending', [ArticleController::class, 'trending'])->name('trending.index');
 Route::get('/search', [ArticleController::class, 'search'])->name('search.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

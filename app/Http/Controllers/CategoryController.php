@@ -30,7 +30,7 @@ class CategoryController
             $query->where('kategori_id', $activeCategory->id);
         }
 
-        $articles = $query->paginate(14)->appends(['cat' => $activeSlug]);
+        $articles = $query->paginate(10)->appends(['cat' => $activeSlug]);
 
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
