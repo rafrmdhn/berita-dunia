@@ -31,7 +31,7 @@
                 <div class="col-lg-8">
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" src="{{ $article->sumber_gambar }}" style="object-fit: cover;">
+                        <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit: cover;">
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
