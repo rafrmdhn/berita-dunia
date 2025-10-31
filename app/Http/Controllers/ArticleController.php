@@ -70,7 +70,8 @@ class ArticleController
 
         $articles = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
-            ->trendingScore(7)->paginate(10);
+            ->trendingScore(7)
+            ->paginate(10);
 
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
@@ -146,15 +147,5 @@ class ArticleController
             'tags',
             'popular'
         ));
-    }
-
-    public function fillSlugs()
-    {
-        $articles = Article::where('slug', '')->get();
-        foreach ($articles as $article) {
-            $article->slug = Str::slug($article->judul) . '-' . Str::random(5);
-            $article->save();
-        }
-        return 'Slugs filled for ' . $articles->count() . ' articles.';
     }
 }
