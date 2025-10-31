@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/fill-slugs', [ArticleController::class, 'fillSlugs'])->name('articles.fillSlugs');
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
 Route::post('/comments/store', [ArticleController::class, 'comment'])->name('comments.store');
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');

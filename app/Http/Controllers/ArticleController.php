@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ArticleController
@@ -65,7 +66,7 @@ class ArticleController
     public function trending(Request $request)
     {
         $usedIds = collect();
-        $allowedCategories = [7,8,9,10,11];
+        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
         $articles = Article::with('category')->trendingScore(7)->paginate(10);
 
@@ -143,5 +144,15 @@ class ArticleController
             'tags',
             'popular'
         ));
+    }
+
+    public function fillSlugs()
+    {
+        $articles = Article::where('slug', '')->get();
+        foreach ($articles as $article) {
+            $article->slug = Str::slug($article->judul) . '-' . Str::random(5);
+            $article->save();
+        }
+        return 'Slugs filled for ' . $articles->count() . ' articles.';
     }
 }
