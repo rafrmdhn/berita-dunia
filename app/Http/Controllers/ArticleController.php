@@ -33,7 +33,7 @@ class ArticleController
             ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
             ->take(3)
             ->get();
-
+        $article->increment('views');
         return view('news.show', compact(
             'article',
             'trending',
