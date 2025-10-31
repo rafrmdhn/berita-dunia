@@ -23,7 +23,7 @@ class ArtikelSeeder extends Seeder
                 $title = $faker->sentence(6);
 
                 Article::create([
-                    'gambar'         => null,
+                    'sumber_gambar'         => 'picsum.photos',
                     'gambar'  => 'https://picsum.photos/600/400?random=' . rand(1, 1000),
                     'judul'          => $title,
                     'slug'           => Str::slug($title) . '-' . Str::random(5),
