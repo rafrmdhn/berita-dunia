@@ -120,7 +120,7 @@ class ArticleController
             ->paginate(12)
             ->appends($request->query());
         $trending = Article::with('category')
-            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
             ->whereNotIn('id', $usedIds)
             ->trendingScore(7)
             ->take(5)
