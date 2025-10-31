@@ -32,7 +32,12 @@ class CategoryController
 
         $articles = $query->paginate(10)->appends(['cat' => $activeSlug]);
 
-        $trending = Article::with('category')->trendingScore(5, 7)->get();
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
 
         $tags = Tag::take(20)->get();
 

@@ -16,7 +16,12 @@ class ArticleController
         $article = Article::with(['category','tags'])
             ->where('slug',$slug)
             ->firstOrFail();
-        $trending = Article::with('category')->trendingScore(5, 7)->get();
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)
             ->take(5)

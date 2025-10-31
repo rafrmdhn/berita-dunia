@@ -22,7 +22,12 @@ class TagController
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)->take(5)->get();
 
-        $trending = Article::with('category')->trendingScore(5, 7)->get();
+        $trending = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->whereNotIn('id', $usedIds)
+            ->trendingScore(7)
+            ->take(5)
+            ->get();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])

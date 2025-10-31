@@ -48,7 +48,7 @@
                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                         <div class="mb-2">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
-                            <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
                         </div>
                         <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">{{ Str::limit($item->judul, 20) }}</a>
                     </div>
