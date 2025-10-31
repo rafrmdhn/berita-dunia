@@ -39,7 +39,7 @@
     <!-- Popular News Start -->
     <div class="mb-3">
         <div class="section-title mb-0">
-            <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
+            <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
         </div>
         <div class="bg-white border border-top-0 p-3">
             @foreach ($trending as $item)
@@ -47,10 +47,10 @@
                     <img class="img-fluid" src="{{ $item->gambar }}" style="object-fit: cover; object-position: center; display: block; width: 110px; height: 110px;" alt="">
                     <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                         <div class="mb-2">
-                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{ $item->category->name }}</a>
-                            <a class="text-body" href=""><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></a>
+                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category.index', ['cat' => $item->category->slug]) }}">{{ $item->category->name }}</a>
+                            <span class="text-body"><small>{{ \Carbon\Carbon::parse($item->tanggal_posting)->format('F d, Y') }}</small></span>
                         </div>
-                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">{{ Str::limit($item->judul, 20) }}</a>
+                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('articles.show', ['slug' => $item->slug]) }}">{{ Str::limit($item->judul, 20) }}</a>
                     </div>
                 </div>
             @endforeach

@@ -61,6 +61,7 @@ class HomeController
             ->trendingScore(7)
             ->take(5)
             ->get();
+        $usedIds = $usedIds->merge($side->pluck('id'));
 
         $tags = Tag::take(20)->get();
 
