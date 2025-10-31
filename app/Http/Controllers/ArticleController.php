@@ -65,7 +65,7 @@ class ArticleController
     public function trending(Request $request)
     {
         $usedIds = collect();
-        $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
+        $allowedCategories = [7,8,9,10,11];
 
         $articles = Article::with('category')->trendingScore(7)->paginate(10);
 
