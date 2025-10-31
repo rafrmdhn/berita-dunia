@@ -68,7 +68,7 @@ class ArticleController
         $usedIds = collect();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
-        $articles = Article::with('category')->trendingScore(7)->paginate(10);
+        $articles = Article::with($allowedCategories)->trendingScore(7)->paginate(10);
 
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
