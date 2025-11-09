@@ -61,6 +61,7 @@ class HomeController
             ->get();
         $usedIds = $usedIds->merge($latest->pluck('id'));
 
+        $usedIds = collect();
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
