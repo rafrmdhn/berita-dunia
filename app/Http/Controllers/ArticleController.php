@@ -15,11 +15,13 @@ class ArticleController
         $usedIds = collect();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
         $article = Article::with(['category','tags'])
-            ->where('slug',$slug)
+            ->where('slug', $slug)
+            ->terbit()
             ->firstOrFail();
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
+            ->terbit()
             ->trendingScore(7)
             ->take(5)
             ->get();
@@ -31,6 +33,7 @@ class ArticleController
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
+            ->terbit()
             ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
             ->take(3)
             ->get();

@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title">
-                                <h4 class="m-0 text-uppercase font-weight-bold">Category: {{ $activeCategory->name ?? 'All' }}</h4>
+                                <h4 class="m-0 text-uppercase font-weight-bold">{{ $activeCategory->name ?? 'All Categories' }}</h4>
                             </div>
                             @php $visibleCount = 8; @endphp
                             <style>

@@ -18,6 +18,7 @@ class ContactController
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
+            ->terbit()
             ->trendingScore(7)
             ->take(5)
             ->get();
@@ -29,6 +30,7 @@ class ContactController
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
             ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
+            ->terbit()
             ->take(3)
             ->get();
 

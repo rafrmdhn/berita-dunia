@@ -17,6 +17,7 @@ class HomeController
 
         $hero = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->terbit()
             ->orderByDesc('views')
             ->take(3)
             ->get();
@@ -26,7 +27,8 @@ class HomeController
             ->breakingToday()
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
-            ->latest('created_at')
+            ->terbit()
+            ->latest('tanggal_posting')
             ->take(4)
             ->get();
         $usedIds = $usedIds->merge($breaking->pluck('id'));
@@ -35,7 +37,8 @@ class HomeController
             ->where('is_featured', true)
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
-            ->latest('created_at')
+            ->terbit()
+            ->latest('tanggal_posting')
             ->take(5)
             ->get();
         $usedIds = $usedIds->merge($featured->pluck('id'));
@@ -43,7 +46,8 @@ class HomeController
         $side = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
-            ->latest('created_at')
+            ->terbit()
+            ->latest('tanggal_posting')
             ->take(4)
             ->get();
         $usedIds = $usedIds->merge($side->pluck('id'));
@@ -51,15 +55,17 @@ class HomeController
         $latest = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
-            ->latest('created_at')
+            ->terbit()
+            ->latest('tanggal_posting')
             ->take(13)
             ->get();
-         $usedIds = $usedIds->merge($latest->pluck('id'));
+        $usedIds = $usedIds->merge($latest->pluck('id'));
 
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
             ->trendingScore(7)
+            ->terbit()
             ->take(5)
             ->get();
 
@@ -68,9 +74,11 @@ class HomeController
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)->take(5)->get();
 
+        $usedIds = collect();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
+            ->terbit()
             ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
             ->take(3)
             ->get();

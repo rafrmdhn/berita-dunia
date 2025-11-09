@@ -35,11 +35,11 @@
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">{{ $article->category->name }}</a>
-                                <a class="text-body" href="">{{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y ') }}</a>
+                                    href="{{ route('category.index', ['cat' => $article->category->slug]) }}">{{ $article->category->name }}</a>
+                                <span class="text-body">{{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y ') }}</span>
                             </div>
                             <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{ $article->judul }}</h1>
-                            <p>{!! $article->deskripsi !!}</p>
+                            <p class="text-justify">{!! $article->deskripsi !!}</p>
                         </div>
                         <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                             <div class="d-flex align-items-center">

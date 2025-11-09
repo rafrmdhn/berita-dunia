@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
         // }
 
         $this->call([
-            ArtikelSeeder::class,
+            ArtikelTagSeeder::class,
         ]);
     }
 }

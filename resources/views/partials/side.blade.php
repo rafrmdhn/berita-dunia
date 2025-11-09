@@ -65,8 +65,8 @@
         </div>
         <div class="bg-white border border-top-0 p-3">
             <div class="d-flex flex-wrap m-n1">
-                @foreach ($tags as $item)
-                    <a href="{{ route('tags.show', ['slug' => $item->slug]) }}" class="btn btn-sm btn-outline-secondary m-1">{{ $item->name }}</a>
+                @foreach(($article->tags ?? $tags) as $tag)
+                    <a href="{{ route('tags.show', $tag->slug) }}" class="btn btn-sm btn-outline-secondary m-1">{{ $tag->name }}</a>
                 @endforeach
             </div>
         </div>

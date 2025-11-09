@@ -22,6 +22,7 @@ class CategoryController
             ->whereHas('category', function ($q) use ($allowedCategories) {
                 $q->whereIn('name', $allowedCategories);
             })
+            ->terbit()
             ->latest();
 
         $activeCategory = null;
@@ -35,6 +36,7 @@ class CategoryController
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
+            ->terbit()
             ->trendingScore(7)
             ->take(5)
             ->get();
@@ -44,6 +46,7 @@ class CategoryController
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
+            ->terbit()
             ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
             ->take(3)
             ->get();

@@ -97,4 +97,9 @@ class Article extends Model
 
         return $q->orderByDesc('pop_score');
     }
+
+    public function scopeTerbit($q)
+    {
+        return $q->where('tanggal_posting', '<=', now('Asia/Jakarta'));
+    }
 }

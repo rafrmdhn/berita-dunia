@@ -7,14 +7,15 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class TagController
+class TagController extends Controller
 {
     public function show(Tag $tag)
     {
         $usedIds = collect();
-        $tags = Tag::take(20)->get();
+        $tags = Tag::all();
         $articles = Article::with('category','tags')
             ->whereHas('tags', fn($q) => $q->where('tags.id', $tag->id))
+            ->terbit()
             ->latest()
             ->paginate(10);
 
@@ -25,12 +26,14 @@ class TagController
         $trending = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds)
+            ->terbit()
             ->trendingScore(7)
             ->take(5)
             ->get();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
+            ->terbit()
             ->popularScore(30, commentsWeight: 3.0, decay: 1.2)
             ->take(3)
             ->get();
