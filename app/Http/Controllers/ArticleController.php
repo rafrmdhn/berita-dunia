@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Comment;
@@ -11,7 +12,10 @@ use Illuminate\Http\Request;
 
 class ArticleController
 {
-    public function show($slug) {
+    public function show($slug)
+    {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
         $article = Article::with(['category','tags'])
@@ -43,7 +47,9 @@ class ArticleController
             'trending',
             'categories',
             'tags',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 
@@ -68,6 +74,8 @@ class ArticleController
 
     public function trending(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
@@ -101,12 +109,16 @@ class ArticleController
             'trending',
             'categories',
             'tags',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 
     public function search(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $q     = trim($request->query('q', ''));
         $cat   = $request->query('cat');
@@ -148,7 +160,9 @@ class ArticleController
             'categories',
             'trending',
             'tags',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 }

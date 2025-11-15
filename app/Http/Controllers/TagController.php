@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
@@ -11,6 +12,8 @@ class TagController extends Controller
 {
     public function show(Tag $tag)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $tags = Tag::all();
         $articles = Article::with('category','tags')
@@ -44,7 +47,9 @@ class TagController extends Controller
             'categories',
             'trending',
             'tags',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 }
