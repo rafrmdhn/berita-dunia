@@ -69,9 +69,11 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="col-lg-12 mb-3">
-                            <a href=""><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
+                        @if(!empty($headerAd))
+                            <div class="col-lg-12 mb-3">
+                                <a href="{{ $headerAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid w-100" src="{{ $headerAd->image_path }}" alt="{{ $headerAd->title }}"></a>
+                            </div>
+                        @endif
                         @foreach ($articles->skip(2)->take(2) as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
@@ -120,9 +122,11 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="col-lg-12 mb-3">
-                            <a href=""><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
+                        @if(!empty($headerAd))
+                            <div class="col-lg-12 mb-3">
+                                <a href="{{ $headerAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid w-100" src="{{ $headerAd->image_path }}" alt="{{ $headerAd->title }}"></a>
+                            </div>
+                        @endif
                         <div class="col-lg-12">
                             @foreach ($articles->skip(8)->take(1) as $item)
                                 <div class="row news-lg mx-0 mb-3">

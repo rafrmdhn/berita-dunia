@@ -30,9 +30,11 @@
         <div class="section-title mb-0">
             <h4 class="m-0 text-uppercase font-weight-bold">Advertisement</h4>
         </div>
-        <div class="bg-white text-center border border-top-0 p-3">
-            <a href=""><img class="img-fluid" src="img/news-800x500-2.jpg" alt=""></a>
-        </div>
+        @if(!empty($sidebarAd))
+            <div class="bg-white text-center border border-top-0 p-3">
+                <a href="{{ $sidebarAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid" src="{{ $sidebarAd->image_path }}" alt="{{ $sidebarAd->title }}"></a>
+            </div>
+        @endif
     </div>
     <!-- Ads End -->
 
