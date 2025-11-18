@@ -32,9 +32,9 @@
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
                         <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit: cover;">
-                        @if (!empty($article->image_source))
+                        @if (!empty($article->sumber_gambar))
                             <span class="text-muted ml-2" style="font-size: 0.8rem;">
-                                Sumber gambar: {{ $article->image_source }}
+                                Sumber gambar: {{ $article->sumber_gambar }}
                             </span>
                         @endif
                         <div class="bg-white border border-top-0 p-4">
