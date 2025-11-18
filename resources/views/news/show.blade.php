@@ -32,6 +32,11 @@
                     <!-- News Detail Start -->
                     <div class="position-relative mb-3">
                         <img class="img-fluid w-100" src="{{ $article->gambar }}" style="object-fit: cover;">
+                        @if (!empty($article->image_source))
+                            <span class="text-muted ml-2" style="font-size: 0.8rem;">
+                                Sumber gambar: {{ $article->image_source }}
+                            </span>
+                        @endif
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
