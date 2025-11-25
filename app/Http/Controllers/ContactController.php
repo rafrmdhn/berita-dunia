@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
@@ -13,6 +14,8 @@ class ContactController
 {
     public function index()
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
         $trending = Article::with('category')
@@ -25,7 +28,7 @@ class ContactController
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)
             ->take(5)->get();
-        $tags = Tag::take(20)->get();
+        $tags = Tag::latest()->take(20)->get();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
@@ -38,7 +41,9 @@ class ContactController
             'trending',
             'categories',
             'tags',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 

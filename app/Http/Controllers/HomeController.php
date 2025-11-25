@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
@@ -11,6 +12,8 @@ class HomeController
 {
     public function index()
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
 
         $usedIds = collect();
@@ -70,7 +73,7 @@ class HomeController
             ->take(5)
             ->get();
 
-        $tags = Tag::take(20)->get();
+        $tags = Tag::latest()->take(20)->get();
 
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)->take(5)->get();
@@ -93,7 +96,9 @@ class HomeController
             'trending',
             'tags',
             'categories',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 }

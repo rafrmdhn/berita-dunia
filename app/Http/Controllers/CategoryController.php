@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
@@ -11,6 +12,8 @@ class CategoryController
 {
     public function index(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $activeSlug = $request->query('cat');
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
@@ -41,7 +44,7 @@ class CategoryController
             ->take(5)
             ->get();
 
-        $tags = Tag::take(20)->get();
+        $tags = Tag::latest()->take(20)->get();
 
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
@@ -58,7 +61,9 @@ class CategoryController
             'articles',
             'trending',
             'tags',
-            'popular'
+            'popular',
+            'headerAd',
+            'sidebarAd'
         ));
     }
 }
