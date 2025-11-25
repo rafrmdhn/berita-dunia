@@ -41,9 +41,11 @@
                 <h1 class="m-0 display-4 text-uppercase text-primary">Berita<span class="text-secondary font-weight-bold">Dunia</span></h1>
             </a>
         </div>
-        <div class="col-lg-8 text-center text-lg-right">
-            <a href="https://htmlcodex.com"><img class="img-fluid" src="img/ads-728x90.png" alt=""></a>
-        </div>
+        @if(!empty($headerAd))
+            <div class="col-lg-8 text-center text-lg-right">
+                <a href="{{ $headerAd->link_url }}" target="_blank" rel="noopener"><img class="img-fluid" src="{{ $headerAd->image_path }}" alt="{{ $headerAd->title }}"></a>
+            </div>
+        @endif
     </div>
 </div>
 <!-- Topbar End -->
