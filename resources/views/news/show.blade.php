@@ -48,7 +48,10 @@
                         </div>
                         <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                             <div class="d-flex align-items-center">
-                                <span>{{ $article->nama_penulis }}</span>
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold">Penulis: {{ $article->nama_penulis }}</span>
+                                @if(!empty($article->additional_authors->name))
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold">Editor: {{ $article->additional_authors->name }}</span>
+                                @endif
                             </div>
                             <div class="d-flex align-items-center">
                                 <span class="ml-3"><i class="far fa-comment mr-2"></i>{{ $article->comments()->count() }}</span>
