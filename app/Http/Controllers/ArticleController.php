@@ -18,7 +18,7 @@ class ArticleController
         $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $usedIds = collect();
         $allowedCategories = ['Politics','Finance','Health & Lifestyle','Edu/Tech','Technology'];
-        $article = Article::with(['category','tags'])
+        $article = Article::with(['category','tags', 'additional_authors'])
             ->where('slug', $slug)
             ->terbit()
             ->firstOrFail();
