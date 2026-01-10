@@ -17,6 +17,22 @@
             max-width: 100% !important;
             height: auto !important;
         }
+
+        .article-content figure.media {
+            display: block !important;
+            margin: 16px 0;
+        }
+
+        .article-content figure.media > div,
+        .article-content figure.media iframe {
+            width: 100% !important;
+        }
+
+        .article-content figure.media iframe {
+            aspect-ratio: 16 / 9;
+            height: auto !important;
+            display: block;
+        }
     </style>
     <!-- Breaking News Start -->
     <div class="container-fluid mt-5 mb-3 pt-3">
@@ -61,7 +77,7 @@
                                 <span class="text-body">{{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('l, d F Y ') }}</span>
                             </div>
                             <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{ $article->judul }}</h1>
-                            <p class="text-justify">{!! $article->deskripsi !!}</p>
+                            <div class="article-content text-justify">{!! $article->deskripsi !!}</div>
                         </div>
                         <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                             <div class="d-flex align-items-center">
