@@ -1,6 +1,23 @@
 @extends('layouts.main')
 
 @section('container')
+    <style>
+        .article-content figure.image {
+            margin: 12px auto;
+            max-width: 100%;
+        }
+
+        .article-content figure.image.image_resized img {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .article-content figure.image:not(.image_resized) img {
+            width: auto !important;
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    </style>
     <!-- Breaking News Start -->
     <div class="container-fluid mt-5 mb-3 pt-3">
         <div class="container">
