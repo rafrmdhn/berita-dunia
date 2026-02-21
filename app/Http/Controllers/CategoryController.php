@@ -44,7 +44,7 @@ class CategoryController
             ->take(5)
             ->get();
 
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))

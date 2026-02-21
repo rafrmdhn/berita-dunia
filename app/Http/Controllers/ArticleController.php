@@ -33,7 +33,7 @@ class ArticleController
             ->whereIn('name', $allowedCategories)
             ->take(5)
             ->get();
-        $tags = Tag::take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->whereNotIn('id', $usedIds ?? [])
@@ -95,7 +95,7 @@ class ArticleController
             ->whereIn('name', $allowedCategories)
             ->take(5)->get();
 
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
@@ -144,7 +144,7 @@ class ArticleController
             ->trendingScore(7)
             ->take(5)
             ->get();
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
         $popular = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowed))
             ->whereNotIn('id', $usedIds ?? [])

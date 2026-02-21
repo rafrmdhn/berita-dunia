@@ -73,7 +73,7 @@ class HomeController
             ->take(5)
             ->get();
 
-        $tags = Tag::latest()->take(20)->get();
+        $tags = Tag::latest()->take(10)->get();
 
         $categories = Category::withCount('articles')
             ->whereIn('name', $allowedCategories)->take(5)->get();
