@@ -8,7 +8,13 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    {{-- <link href="img/favicon.ico" rel="icon"> --}}
+     <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
+
+    <meta property="og:image" content="https://beritadunia.fypmedia.id/img/logo.png">
+    <meta property="og:description" content="Merangkum berita seputar dinamika politik, mulai dari kebijakan daerah, isu internasional, hingga opini.">
+    <meta property="og:title" content="Berita Dunia">
+    <meta property="og:url" content="https://beritadunia.fypmedia.id/">
+    <meta property="og:type" content="website">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
