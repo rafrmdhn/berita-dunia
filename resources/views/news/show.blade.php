@@ -1,5 +1,13 @@
 @extends('layouts.main')
 
+@section('meta')
+    <meta property="og:title" content="{{ $article->judul }}">
+    <meta property="og:description" content="{{ Str::limit(strip_tags($article->deskripsi), 150) }}">
+    <meta property="og:image" content="{{ $article->gambar }}">
+    <meta property="og:url" content="{{ request()->url() }}">
+    <meta property="og:type" content="article">
+@endsection
+
 @section('container')
     <style>
         .article-content figure.image {

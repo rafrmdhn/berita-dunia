@@ -10,11 +10,15 @@
     <!-- Favicon -->
     <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
 
-    <meta property="og:image" content="https://beritadunia.fypmedia.id/img/logo.png">
-    <meta property="og:description" content="Menghadirkan artikel dan liputan terkurasi dari berbagai isu global dan nasional.">
-    <meta property="og:title" content="Berita Dunia">
-    <meta property="og:url" content="https://beritadunia.fypmedia.id/">
-    <meta property="og:type" content="website">
+    @hasSection('meta')
+        @yield('meta')
+    @else
+        <meta property="og:image" content="https://beritadunia.fypmedia.id/img/logo.png">
+        <meta property="og:description" content="Menghadirkan artikel dan liputan terkurasi dari berbagai isu global dan nasional.">
+        <meta property="og:title" content="Berita Dunia">
+        <meta property="og:url" content="https://beritadunia.fypmedia.id/">
+        <meta property="og:type" content="website">
+    @endif
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
